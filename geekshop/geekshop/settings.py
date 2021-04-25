@@ -55,7 +55,7 @@ ROOT_URLCONF = 'geekshop.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': ['geekshop/templates'],  # указываем в какой еще дирректории искать шаблоны - нашу базовую дирректорию
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -106,7 +106,7 @@ AUTH_PASSWORD_VALIDATORS = [
 
 LANGUAGE_CODE = 'ru-RU'
 
-TIME_ZONE = 'UTC'
+TIME_ZONE = 'Europe/Moscow'
 
 USE_I18N = True
 
@@ -119,8 +119,15 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.2/howto/static-files/
 
 STATIC_URL = '/static/'
+
 STATICFILES_DIRS = (
     os.path.join(BASE_DIR, "static"),
+)
+
+# для поиска папок со статикой внутри папок приложений
+STATICFILES_FINDERS = (
+    'django.contrib.staticfiles.finders.FileSystemFinder',
+    'django.contrib.staticfiles.finders.AppDirectoriesFinder',
 )
 
 # Default primary key field type
