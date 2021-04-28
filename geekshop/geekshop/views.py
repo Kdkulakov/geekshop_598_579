@@ -2,7 +2,11 @@ from django.shortcuts import render
 
 
 def main(request):
-    return render(request, 'index.html')
+    context = {
+        'slogan': 'Супер УДОБНЫЕ СТУЛЬЯ',
+        'topic': 'Тренды'
+    }
+    return render(request, 'index.html', context=context)
 
 
 def contacts(request):
