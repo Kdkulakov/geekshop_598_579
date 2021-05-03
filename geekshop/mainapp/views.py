@@ -3,11 +3,11 @@ from django.shortcuts import render
 
 def products(request):
     links_menu = {'links': [
-            {'href': 'index', 'name': 'все'},
-            {'href': 'index', 'name': 'дом'},
-            {'href': 'index', 'name': 'офис'},
-            {'href': 'index', 'name': 'модерн'},
-            {'href': 'index', 'name': 'классика'}
+            {'href': 'products:index', 'name': 'все'},
+            {'href': 'products:index', 'name': 'дом'},
+            {'href': 'products:index', 'name': 'офис'},
+            {'href': 'products:index', 'name': 'модерн'},
+            {'href': 'products:index', 'name': 'классика'}
         ]}
     return render(request, 'products.html', context=links_menu)
 

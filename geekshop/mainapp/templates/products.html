@@ -6,12 +6,11 @@
 	<div class="container">
 		<div class="hero-white">
 			<div class="header clearfix">
-				<a href="index.html" class="logo"></a>
+				<a href="{% url 'index' %}" class="logo"></a>
 				<ul class="menu">
-					<li><a href="/">домой</a></li>
-					<li><a href="/products/" class="active">продукты</a></li>
-					<li><a href="/contacts/">контакты</a></li>
-
+					<li><a href="{% url 'index' %}">домой</a></li>
+					<li><a href="{% url 'products:index' %}" class="active">продукты</a></li>
+					<li><a href="{% url 'contacts' %}">контакты</a></li>
 				</ul>
 				<a href="#" class="search"></a>
                 <a href="#" class="basket"></a>
@@ -31,17 +30,17 @@
 					</div>
 					<div class="slider-control">
 						<div class="block">
-							<a href="#"><img src="/static/img/controll.jpg" alt="">
+							<a href="#"><img src="/static/img/controll.jpg" class="block-text-img" alt="">
 								<div class="text"></div>
 							</a>
 						</div>
 						<div class="block">
-							<a href="#"><img src="/static/img/controll1.jpg" alt="">
+							<a href="#"><img src="/static/img/controll1.jpg" class="block-text-img" alt="">
 								<div class="text"></div>
 							</a>
 						</div>
 						<div class="block">
-							<a href="#"><img src="/static/img/controll2.jpg" alt="">
+							<a href="#"><img src="/static/img/controll2.jpg" class="block-text-img" alt="">
 								<div class="text"></div>
 							</a>
 						</div>

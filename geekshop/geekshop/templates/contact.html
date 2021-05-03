@@ -3,26 +3,19 @@
 {% load static %}
 
 {% block main_slider %}
-        <div class="slider">
-			<div class="header clearfix">
-				<a href="index.html" class="logo"></a>
-				<ul class="menu">
-					<li><a href="{% url 'index' %}" class="active">домой</a></li>
-					<li><a href="{% url 'mainapp:index' %}">продукты</a></li>
-					<li><a href="{% url 'contacts' %}">контакты</a></li>
-				</ul>
-				<a href="#" class="search"></a>
-			</div>
-			<div class="text-slider">
-				<h3 class="green">тенденции</h3>
-				<h3 class="big"> удобные стулья</h3>
-				<p>Новый уровень комфорта. Отличные характеристики.</p>
-				<a href="#" class="button-order">заказать <img src="/static/img/arrow.png" alt=""></a>
-			</div>
-			<div class="navi">
-				<a href="#"></a><a href="#"></a><a href="#"></a>
-			</div>
-		</div>
+    <div class="hero">
+        <div class="header clearfix">
+            <a href="{% url 'index' %}" class="logo"></a>
+            <ul class="menu">
+                <li><a href="{% url 'index' %}">домой</a></li>
+                <li><a href="{% url 'products:index' %}">продукты</a></li>
+                <li><a href="{% url 'contacts' %}" class="active">контакты</a></li>
+            </ul>
+            <a href="#" class="search"></a>
+            <a href="#" class="basket"></a>
+        </div>
+        <h1>наши контакты</h1>
+    </div>
 {% endblock %}
 
 {% block content %}
