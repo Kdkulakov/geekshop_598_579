@@ -1,14 +1,26 @@
 from django.shortcuts import render
+from django.shortcuts import get_object_or_404
+from mainapp.models import ProductCategory, Product
 
 
-def products(request):
-    links_menu = {'links': [
+def products(request, pk=None):
+    print(pk)
+    title = 'продукты'
 
-            {'href': 'products:index', 'name': 'все'},
-            {'href': 'products:index', 'name': 'дом'},
-            {'href': 'products:index', 'name': 'офис'},
-            {'href': 'products:index', 'name': 'модерн'},
-            {'href': 'products:index', 'name': 'классика'}
-        ]}
-    return render(request, 'products.html', context=links_menu)
+    categories = ProductCategory.objects.all()
+    if pk is not None:
+        if pk == 0:
+            products = Product.objects.all().order_by('price')
+            category = {'name': 'все'}
+        else:
+            category = get_object_or_404(ProductCategory, pk=pk)
+            products = Product.objects.filter(category_id__pk=pk).order_by('price')
+
+    context = {
+        'title': title,
+        'categories': categories,
+        'category': category,
+        'products': products,
+    }
+    return render(request, 'products_list.html', context=context)
 
