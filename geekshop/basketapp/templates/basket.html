@@ -1,57 +1,28 @@
 {% extends 'base.html' %}
 {% load static %}
-
 {% block js %}
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
-  crossorigin="anonymous"></script>
-    <script src="{% static 'basketapp/js/basket.js' %}"></script>
-
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="{% static 'basketapp/js/basket_script.js' %}"></script>
 {% endblock %}
-
-
 {% block main_slider %}
+	<div class="container">
 		<div class="hero-white">
             {% include 'includes/inc_main_menu.html' %}
 		</div>
 {% endblock %}
-
 {% block content %}
     {% if user.is_authenticated %}
         <div class="container">
             <div class="row">
                 <div class="basket_list">
-                  {% for item in basket_items %}
-                    <div class="basket_record">
-                      <img src="/media/{{ item.product.image }}"
-                           alt="{{ item.product.short_desc }}">
-                      <span class="category_name">{{ item.product.category.name }}</span>
-                      <span class="product_name">{{ item.product.name }}</span>
-                      <span class="product_price">{{ item.product.price }}&nbspруб</span>
-                      <input type="number" name="{{ item.pk }}"
-                                           min="0"
-                                           value="{{ item.quantity }}">
-                      <span class="product_cost">{{ item.cost }}&nbspруб</span>
-                      <button class="btn btn-round">
-                        <a href="{% url 'basket:remove' item.pk %}" class="">
-                          удалить
-                        </a>
-                      </button>
-                    </div>
-                  {% endfor %}
+                    {% include 'includes/inc_basket_list.html' %}
+                </div>
 
-                  {% if basket_items %}
-                    <div class="basket_summary">
-                      В корзине {{ basket_items.0.total_quantity }} товаров общей стоимостью
-                                {{ basket_items.0.total_cost }} руб
-                    </div>
-                  {% endif %}
-
-                    <button class="btn btn-round">
-                      <a href="{% url 'index' %}">на главную</a>
-                    </button>
-                  </div>
+                <button class="btn btn-outline-info text-center col-2">
+                  <a href="{% url 'index' %}">на главную</a>
+                </button>
             </div>
         </div>
-
+        </div>
     {% endif %}
 {% endblock %}
