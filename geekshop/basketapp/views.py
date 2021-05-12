@@ -61,9 +61,9 @@ def basket_edit(request, pk, quantity):
         basket_items = Basket.objects.filter(user=request.user).order_by('product__category')
 
         content = {
-            'basket': basket_items,
+            'basket_items': basket_items,
         }
 
-        result = render_to_string('basketapp/includes/inc_basket_list.html', content)
+        result = render_to_string('includes/inc_basket_list.html', content)
 
         return JsonResponse({'result': result})
