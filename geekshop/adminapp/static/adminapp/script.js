@@ -17,7 +17,7 @@ toggle.classList.toggle('bx-x')
 bodypd.classList.toggle('body-pd')
 // add padding to header
 headerpd.classList.toggle('body-pd')
-});
+})
 }
 }
 
